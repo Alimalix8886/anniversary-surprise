@@ -1,60 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Our Anniversary ❤️<Happy ANNIVERSARY MISS MEHRU FATIMA ALI JI>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 1 Year Anniversary ❤️</title>
 
-<style>
-body{
-    background: linear-gradient(45deg,#ff4e8a,#ff9eb5);
-    text-align:center;
-    font-family: Arial;
-    color:white;
-    margin-top:100px;
-}
+  <style>
+    body {
+      background: linear-gradient(45deg, #ff4e8a, #ff9eb5);
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
 
-h1{
-    font-size:40px;
-}
+    h1 {
+      font-size: 50px;
+      margin-top: 100px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    }
 
-button{
-    padding:15px 30px;
-    font-size:18px;
-    background:white;
-    color:#ff4e8a;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
+    .message {
+      font-size: 22px;
+      margin-top: 30px;
+      display: none;
+      animation: fadeIn 2s ease-out;
+    }
 
-#msg{
-    margin-top:30px;
-    font-size:24px;
-    display:none;
-}
-</style>
+    .heart {
+      position: absolute;
+      color: white;
+      font-size: 40px;
+      animation: fall 5s infinite;
+      pointer-events: none;
+    }
 
-<script>
-function showMessage(){
-document.getElementById("msg").style.display="block";
-}
-</script>
+    .heart:nth-child(odd) {
+      animation-duration: 4s;
+    }
 
+    .heart:nth-child(even) {
+      animation-duration: 6s;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    button {
+      background: #ff4e8a;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 20px;
+      font-size: 20px;
+      cursor: pointer;
+      margin-top: 50px;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background: #ff9eb5;
+      transform: scale(1.1);
+    }
+
+    .timer {
+      font-size: 24px;
+      margin-top: 30px;
+    }
+
+    #slideshow {
+      margin-top: 50px;
+      max-width: 80%;
+      margin: auto;
+      display: none;
+    }
+
+    #slideshow img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Falling hearts */
+    .heart {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      animation: fall 5s infinite linear;
+    }
+  </style>
 </head>
-
 <body>
+  <h1>Happy 1 Year Anniversary ❤️</h1>
+  <p>My Dear Begum, you complete my world!</p>
 
-<h1>Happy 1 Year Anniversary ❤️</h1>
-<h2>My Dear Begum</h2>
+  <button onclick="showMessage()">Click to Reveal the Love 💌</button>
 
-<button onclick="showMessage()">Click Here</button>
+  <div class="message" id="specialMessage">
+    <p>Thank you for making my life beautiful. I love you more every day!</p>
+  </div>
 
-<div id="msg">
-<p>
-Thank you for making my life beautiful.  
-I love you more every day. ❤️  
-Happy Anniversary My Love!
-</p>
-</div>
+  <div id="slideshow">
+    <img src="your-photo1.jpg" alt="Your photo">
+    <img src="your-photo2.jpg" alt="Your photo">
+    <img src="your-photo3.jpg" alt="Your photo">
+  </div>
 
+  <div class="timer" id="loveTimer"></div>
+
+  <audio id="bgMusic" autoplay loop>
+    <source src="romantic-song.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    // Show love message
+    function showMessage() {
+      document.getElementById("specialMessage").style.display = "block";
+      startSlideshow();
+    }
+
+    // Timer function for 1 year
+    function startLoveTimer() {
+      const startDate = new Date("2025-03-12T00:00:00");  // Change to your anniversary date
+      setInterval(function() {
+        const currentTime = new Date();
+        const diff = currentTime - startDate;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById("loveTimer").innerHTML = `Time spent together: ${days} days ${hours} hours ${minutes} minutes`;
+      }, 1000);
+    }
+
+    // Slideshow function
+    function startSlideshow() {
+      let currentSlide = 0;
+      const slides = document.querySelectorAll("#slideshow img");
+      document.getElementById("slideshow").style.display = "block";
+      
+      setInterval(function() {
+        slides[currentSlide].style.display = "none";
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].style.display = "block";
+      }, 3000);
+    }
+
+    // Generate falling hearts animation
+    function generateHearts() {
+      setInterval(function() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = `${Math.random() * 100}vw`;
+        document.body.appendChild(heart);
+      }, 500);
+    }
+
+    // Start the timer and heart animation
+    startLoveTimer();
+    generateHearts();
+  </script>
 </body>
 </html>
