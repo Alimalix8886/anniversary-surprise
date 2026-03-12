@@ -115,9 +115,12 @@
 
   <div class="timer" id="loveTimer"></div>
 
-  <audio id="bgMusic" autoplay loop>
-    <source src="https://github.com/Alimalix8886/anniversary-surprise/blob/9faa675676fcd22743e938afbffe448cc38292ab/Audio.mpeg?raw=true" type="audio/mpeg">
-  </audio>
+  <button onclick="document.getElementById('audio').play()">Play Song</button>
+
+<audio id="audio" loop>
+  <source src="https://raw.githubusercontent.com/Alimalix8886/anniversary-surprise/9faa675676fcd22743e938afbffe448cc38292ab/Audio.mpeg" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
   <script>
     // Show love message
@@ -170,6 +173,7 @@
   </script>
 </body>
 </html>
+
 
 
 
