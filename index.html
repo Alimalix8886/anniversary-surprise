@@ -12,13 +12,12 @@ body {
   text-align: center;
   background: black;
   color: white;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .container {
   position: relative;
   z-index: 2;
-  margin-top: 30px;
   padding: 20px;
 }
 
@@ -42,14 +41,30 @@ img {
 }
 
 button {
-  margin-top: 20px;
   padding: 12px 20px;
   border: none;
   border-radius: 25px;
-  background: gold;
-  color: black;
-  font-size: 1em;
+  margin: 10px;
   cursor: pointer;
+}
+
+/* buttons */
+#yes {
+  background: #ff4b5c;
+  color: white;
+  position: relative;
+}
+
+#no {
+  background: #4CAF50;
+  color: white;
+}
+
+#message {
+  margin-top: 20px;
+  font-size: 1.3em;
+  display: none;
+  color: pink;
 }
 
 canvas {
@@ -68,27 +83,57 @@ canvas {
   <h1>🌙 Eid Mubarak Fatima Ali ❤️</h1>
 
   <div class="poetry">
-    "i Love You Melaa bachaww🥺🫀🫂Eid Mubarak Miss Mehru Fatima Ali ji<br>
-    Allah Pak Apko mere sath Hamesha khush rakhy Ameen 🥹💋💕🫶🏼
-    umaaaaah 🫣🫀🌍💗🫂Once Again Eid Mubarak Meri jaaan 🤭🫶🏼"
+    "Tum meri zindagi ki sab se khoobsurat dua ho 💖<br>
+    Har Eid tumhare saath ho, bas yahi meri khwahish hai ✨"
   </div>
 
-  <!-- ✅ IMAGE ADDED -->
-  <img src="https://raw.githubusercontent.com/Alimalix8886/anniversary-surprise/7429fe58b264189669607c1c8b9fdfbaea941dcb/IMG_3742.jpeg" alt="Love">
+  <img src="https://raw.githubusercontent.com/Alimalix8886/anniversary-surprise/7429fe58b264189669607c1c8b9fdfbaea941dcb/IMG_3742.jpeg">
 
   <br>
 
   <button onclick="playAudio()">🔊 Play My Message</button>
 
   <audio id="audio">
-    <!-- ⚠️ Yahan apni voice ka link dalna -->
     <source src="YOUR_AUDIO_LINK_HERE" type="audio/mpeg">
   </audio>
+
+  <hr style="margin:30px 0; border:1px solid #555;">
+
+  <!-- LOVE GAME -->
+  <h1>Do You Love Me? ❤️</h1>
+
+  <button id="yes">Yes 😍</button>
+  <button id="no" onclick="showMessage()">No 😜</button>
+
+  <div id="message">
+    😏 Mujhe pata tha tum mujhse pyar karti ho Fatima ❤️
+  </div>
 </div>
 
 <script>
+// AUDIO
 function playAudio() {
   document.getElementById("audio").play();
+}
+
+// LOVE GAME
+let yesBtn = document.getElementById("yes");
+let clickCount = 0;
+
+yesBtn.addEventListener("click", function() {
+  clickCount++;
+
+  if (clickCount < 3) {
+    let x = Math.random() * 200 - 100;
+    let y = Math.random() * 200 - 100;
+    yesBtn.style.transform = `translate(${x}px, ${y}px)`;
+  } else {
+    showMessage();
+  }
+});
+
+function showMessage() {
+  document.getElementById("message").style.display = "block";
 }
 
 // FIREWORKS
@@ -129,10 +174,6 @@ function animate() {
 
   requestAnimationFrame(animate);
 }
-
-canvas.addEventListener("click", (e) => {
-  createFirework(e.clientX, e.clientY);
-});
 
 setInterval(() => {
   createFirework(Math.random() * canvas.width, Math.random() * canvas.height / 2);
