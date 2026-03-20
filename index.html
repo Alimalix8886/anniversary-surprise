@@ -60,13 +60,6 @@ button {
   color: white;
 }
 
-#message {
-  margin-top: 20px;
-  font-size: 1.3em;
-  display: none;
-  color: pink;
-}
-
 canvas {
   position: fixed;
   top: 0;
@@ -103,11 +96,7 @@ canvas {
   <h1>Do You Love Me? ❤️</h1>
 
   <button id="yes">Yes 😍</button>
-  <button id="no" onclick="showMessage()">No 😜</button>
-
-  <div id="message">
-    😏 Mujhe pata tha tum mujhse pyar karti ho Fatima ❤️
-  </div>
+  <button id="no" onclick="showPopup()">No 😜</button>
 </div>
 
 <script>
@@ -128,12 +117,13 @@ yesBtn.addEventListener("click", function() {
     let y = Math.random() * 200 - 100;
     yesBtn.style.transform = `translate(${x}px, ${y}px)`;
   } else {
-    showMessage();
+    showPopup();
   }
 });
 
-function showMessage() {
-  document.getElementById("message").style.display = "block";
+// POPUP MESSAGE 💖
+function showPopup() {
+  alert("I Love you tooo so much Mela bachawww🥹💋💗");
 }
 
 // FIREWORKS
